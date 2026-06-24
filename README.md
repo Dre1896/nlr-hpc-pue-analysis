@@ -1,3 +1,7 @@
+<h1 align="center">
+<img src="assets/banner.png">
+</h1> 
+
 # NLR HPC Facility Power Usage Effectiveness (PUE) Analysis
 
 A decade-long analysis of Power Usage Effectiveness (PUE) 
