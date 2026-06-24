@@ -219,3 +219,4 @@ __marimo__/
 data/
 *.parquet
 *.csv
+.ipynb_checkpoints/
