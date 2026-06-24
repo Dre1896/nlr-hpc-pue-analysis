@@ -25,6 +25,7 @@ reporting to Department of Energy stakeholders.
 
 ## Project Structure
 
+```
 nlr-hpc-pue-analysis/
 ├── analysis/
 │   ├── cleaning_analysis.ipynb
@@ -32,6 +33,7 @@ nlr-hpc-pue-analysis/
 │   └── modeling.ipynb
 ├── data/           # excluded — see Dataset section
 └── assets/
+```
 
 ## Methodology
 
