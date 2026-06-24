@@ -9,7 +9,7 @@ forecasting of facility energy efficiency from 2016-2025.
 ## Background
 
 PUE measures total facility power divided by IT equipment 
-power — a PUE of 1.0 is the theoretical minimum. World-class 
+power, a PUE of 1.0 is the theoretical minimum. World-class 
 HPC facilities target below 1.2. Monitoring PUE at scale 
 enables anomaly detection, cost reduction, and compliance 
 reporting to Department of Energy stakeholders.
@@ -40,14 +40,14 @@ nlr-hpc-pue-analysis/
 ### Data Cleaning
 
 Row-level null co-occurrence analysis revealed 136,486 rows 
-with all five power sensors null simultaneously — 99.97% 
+with all five power sensors null simultaneously to the tune of 99.97% 
 co-occurrence indicating system-wide telemetry outages rather 
 than individual sensor failures. These were dropped rather 
 than imputed. ERE was dropped due to algebraic derivation 
 from PUE (target leakage). energy_reuse was dropped due to 
 sentinel zeros and physically impossible negative values. 
 The power and weather dataframes were joined via left join 
-with forward fill — physically defensible because temperature 
+with forward fill which is physically defensible because temperature 
 changes slowly relative to the 1-hour resampling window.
 
 ### Feature Engineering
@@ -62,7 +62,7 @@ features (hour, day of week, month) encode operational cycles.
 ### Modeling Approach
 
 ACF showed persistent autocorrelation across all 48 lags, 
-remaining above 0.6 at lag 48 — confirming strong temporal 
+remaining above 0.6 at lag 48, confirming strong temporal 
 memory. PACF dropped to near zero after lag 2, indicating 
 direct predictive power concentrates in the two most recent 
 hours. Together these justify an LSTM with a 24-hour sequence 
@@ -75,8 +75,8 @@ and validate feature selection.
 
 ### PUE Distribution
 ![PUE Distribution](assets/pue_distribution.png)
-95% of readings cluster between 1.03-1.08 — world-class 
-efficiency — with a long right tail of spike events.
+95% of readings cluster between 1.03-1.08 (world-class 
+efficiency) with a long right tail of spike events.
 
 ### PUE Over Time — 2016-2025
 ![PUE Over Time](assets/NLR_HPC_Facility_PUE_2016_2025.png)
@@ -97,7 +97,7 @@ indicating growing facility compute demand.
 
 ### Feature Importance
 ![Feature Importance](assets/feature_importance.png)
-pue_lag_1 explains 78.7% of variance — PUE is highly 
+pue_lag_1 explains 78.7% of variance. PUE is highly 
 persistent hour-to-hour. Rate of change features 
 (pue_diff_1, pue_diff_24) contribute the next 16%.
 
@@ -119,7 +119,7 @@ persistent hour-to-hour. Rate of change features
 ### Diagnosis
 
 The LSTM underperformed the persistence baseline due to 
-overfitting — training loss near zero while validation loss 
+overfitting, training loss near zero while validation loss 
 was 10-100x higher and unstable. With pue_lag_1 explaining 
 78.7% of variance, the 24-feature model was overparameterized 
 for this problem. The model tracked normal operations well 
