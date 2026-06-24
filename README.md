@@ -91,9 +91,9 @@ surges against the normal operating band.
 
 ### Correlation Matrix
 ![Correlation Heatmap](assets/correlation_heatmap.png)
-IT power load and pump activity show strongest correlation 
-with PUE. Both have increased steadily from 2016-2025, 
-indicating growing facility compute demand.
+hvac_kw (0.59) and pump_kw (0.36) show the strongest correlation with PUE. 
+Cooling and water circulation overhead are the primary drivers of facility efficiency.
+IT power load correlates most strongly with pump_kw (0.72) and hvac_kw (0.54), confirming that compute demand drives cooling overhead which in turn drives PUE.
 
 ### Feature Importance
 ![Feature Importance](assets/feature_importance.png)
